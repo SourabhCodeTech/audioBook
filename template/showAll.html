@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<style>
+    .audio::-webkit-media-controls-panel {
+        background: none;
+        /* height: 20px; */
+        border-radius: 0px;
+    }
+
+    .audio::-webkit-media-controls-timeline {
+        color: orangered;
+    }
+
+    .audio::-webkit-media-controls-current-time-display {
+        display: none;
+    }
+
+    .audio::-webkit-media-controls-time-remaining-display {
+        display: none;
+    }
+
+    .audio::-webkit-media-controls-volume-slider,
+    .audio::-webkit-media-controls-volume-slider-container {
+        display: none;
+    }
+
+    .audio {
+        width: 98vw;
+    }
+</style>
+{% for i in audio %}
+<div>
+    <p style="text-align: center;">{{ i.audioName }}</p>
+    <audio controls class="audio">
+        <source src="{{i.audioFile.url}}" type="audio/mpeg">
+    </audio>
+</div>
+{% endfor %}
+
+{% endblock %}
